@@ -1,0 +1,148 @@
+<html>
+
+<head>
+    <style>
+        #container{
+        height: 500px;
+        width: 500px;
+        outline: 2px solid gray;
+        position: relative;
+        margin-left: 400px;
+    }
+    #guy
+    {
+        height: 50px;
+        width: 50px;
+        outline: 2px solid gray;
+        position: relative;
+    }
+    </style>
+    <script>
+        window.onload = function () {
+            var smallSquare = document.getElementById("guy");
+            var bottomToTop = 450;
+            var bottomToTopa = 450;
+            var topToBottom = 0;
+            var rightToLeft = 450;
+            var leftToRight = 0;
+            var leftTop = 0;
+            var rightTop = 450;
+            var rightTop1 = 450;
+            var leftPoint = 0;
+            var topPoint = 0;
+            var Points = 0;
+            var Pointss = 0;
+            var pointsforLefttoRight = 0;
+            var SetPoints = 400;
+            var setT;
+            var setR;
+            var setB;
+            var setl;
+            var startpoint = 0;
+            smallSquare.style.left = "450px";
+            smallSquare.style.top = "450px";
+            window.startGame = function()
+            {
+                if(startpoint==0){
+                    setl = setInterval(startl, 30);
+                }
+                if(startpoint==1){
+                    
+                    setT = setInterval(starT, 30);
+                }
+                if(startpoint==2){
+                    
+                    setR = setInterval(starR, 30);
+                }
+                if(startpoint==3){
+                   
+                    setB = setInterval(starB, 30);
+                }
+            }
+            window.stopGame = function()
+            {
+                var killId = setTimeout(function() {
+                    for (var i = killId; i > 0; i--) clearInterval(i)
+                    }, 30);
+            }
+
+            function startl() {
+                rightToLeft = rightToLeft-5;
+                smallSquare.style.left = rightToLeft;
+                smallSquare.style.top = bottomToTopa;
+                if(rightToLeft==leftPoint)
+                {
+                    startpoint = 1;
+                    leftPoint+=50;
+                    bottomToTopa -=50;
+                    rightToLeft = 450-leftPoint;
+                    clearInterval(setl);
+                    setT = setInterval(starT, 30);
+
+                }
+            }
+            function starT() {
+                bottomToTop = bottomToTop-5;
+                smallSquare.style.left = leftTop;
+                smallSquare.style.top = bottomToTop;
+                if(bottomToTop==topPoint)
+                {
+                    startpoint = 2;
+                    topPoint+=50;
+                    leftTop+=50;
+                    bottomToTop = (450-topPoint);
+                    clearInterval(setT);
+                    setR = setInterval(starR, 30);
+
+                }
+            }
+            function starR() {
+                leftToRight  = leftToRight + 5;
+                smallSquare.style.left = leftToRight;
+                smallSquare.style.top = pointsforLefttoRight;
+                if(leftToRight==rightTop)
+                {
+                    console.log(rightTop);
+                    if(rightTop==250)
+                    {
+                        clearInterval(setR);
+                    }
+                    else{
+                    startpoint = 3;
+                    rightTop-=50;
+                    pointsforLefttoRight+=50;
+                    Pointss +=50;
+                    leftToRight = Pointss;
+                    clearInterval(setR);
+                    setB = setInterval(starB, 30);
+}
+                }
+            }
+            function starB() {
+                topToBottom  = topToBottom + 5;
+                smallSquare.style.left = rightTop1;
+                smallSquare.style.top = topToBottom;
+                if(topToBottom==SetPoints)
+                {
+                
+                    startpoint = 4;
+                    SetPoints -=50;
+                    Points +=50;
+                    topToBottom = Points;
+                    rightTop1-=50;
+                    clearInterval(setB);
+                    setl = setInterval(startl, 30);
+                }
+            }
+        }</script>
+</head>
+
+<body>
+    <div id="container">
+        <div id="guy"></div>
+    </div>
+    <input type="submit" value="play" onclick="startGame()" style="top:510px; margin-left: 400px;">
+    <input type="submit" value="paus" onclick="stopGame()" style="margin-left: 410px;">
+</body>
+
+</html>
